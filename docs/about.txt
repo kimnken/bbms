@@ -1,5 +1,9 @@
 Project Topic
 Blockchain-Based Model for Securing Financial Evidence in Anti-Money Laundering Investigations
+By Nken Sharon Kim
+matric no:CYB/22u/3127
+faculty of computing
+nigerian army university biu
 2️⃣ Problem Statement (Draft)
 The rise of digital financial transactions has increased the risk of money laundering and other financial crimes. Law enforcement agencies, particularly Anti-Money Laundering (AML) units, rely on digital transaction records and evidence to investigate such crimes. However, these digital records are vulnerable to tampering, unauthorized access, and loss, which can compromise investigations and prosecutions.
 Traditional centralized storage systems make it difficult to ensure the integrity, security, and auditability of financial evidence. Therefore, there is a need for a secure, tamper-proof system that can protect digital financial evidence while allowing authorized personnel to access and verify it efficiently.
