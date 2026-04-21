@@ -1,0 +1,51 @@
+Project Topic
+Blockchain-Based Model for Securing Financial Evidence in Anti-Money Laundering Investigations
+2️⃣ Problem Statement (Draft)
+The rise of digital financial transactions has increased the risk of money laundering and other financial crimes. Law enforcement agencies, particularly Anti-Money Laundering (AML) units, rely on digital transaction records and evidence to investigate such crimes. However, these digital records are vulnerable to tampering, unauthorized access, and loss, which can compromise investigations and prosecutions.
+Traditional centralized storage systems make it difficult to ensure the integrity, security, and auditability of financial evidence. Therefore, there is a need for a secure, tamper-proof system that can protect digital financial evidence while allowing authorized personnel to access and verify it efficiently.
+Blockchain technology, with its decentralized and immutable nature, provides a solution to these challenges by enabling secure storage, verification, and tracking of financial evidence.
+3️⃣ Aim of the Study
+To design and implement a blockchain-based model for securing digital financial evidence in anti-money laundering investigations, ensuring integrity, security, and traceability.
+4️⃣ Objectives of the Study
+To analyze the challenges of securing digital financial evidence in AML investigations.
+To design a blockchain-based system architecture for storing and tracking financial evidence.
+To implement a prototype blockchain model for securing simulated financial transaction records.
+To evaluate the effectiveness of the model in preventing tampering and unauthorized access.
+To demonstrate the system’s potential to assist law enforcement in AML investigations.
+5️⃣ Significance of the Study
+The study will provide a modern, secure approach to storing and verifying financial evidence. It will assist law enforcement agencies in preventing tampering, ensuring traceability, and improving trust in digital evidence used in investigations. Additionally, the system could be adapted for broader use in banks, regulatory agencies, and other financial institutions.
+6️⃣ Scope of the Study
+The project focuses on simulated financial transaction records rather than real banking data.
+The blockchain model will demonstrate secure storage, traceability, and access control for financial evidence.
+It will cover design, implementation, and evaluation of a prototype system but will not be deployed in a live banking environment.
+7️⃣ Limitations of the Study
+Use of simulated data due to confidentiality of real banking transactions.
+Prototype may not scale to very large datasets without further optimization.
+Focused on digital evidence security; does not cover detection of suspicious transactions themselves (AML analysis is assumed).
+8️⃣ Methodology (Step-by-Step)
+Step 1: Requirement Analysis
+Study AML processes and evidence handling challenges from your SIWES experience.
+Identify security requirements for digital evidence.
+Step 2: System Design
+Blockchain architecture: decentralized ledger, nodes, smart contracts.
+Features: secure storage, verification, audit trail, access control.
+Step 3: Dataset Preparation
+Create simulated digital transaction records with fields like:
+Transaction ID
+Amount
+Sender/receiver ID
+Date/time
+Evidence file (simulated)
+Step 4: Implementation
+Use a private blockchain platform (e.g., Ethereum testnet, Hyperledger, or a simplified Python blockchain simulation).
+Develop smart contracts to store and verify evidence.
+Implement a simple user interface for authorized access.
+Step 5: Testing & Evaluation
+Simulate tampering attempts to test integrity.
+Verify traceability and audit logs.
+Evaluate system performance and security.
+9️⃣ Definition of Terms
+Blockchain: A decentralized, immutable ledger used to store data securely.
+Financial Evidence: Digital records related to financial transactions used in investigations.
+Tamper-Proof: Impossible to alter or manipulate without detection.
+AML: Anti-Money Laundering, measures to prevent illegal financial transactions.
