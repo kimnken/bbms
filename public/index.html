@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBMS | Blockchain Evidence Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">BB<span>MS</span></div>
+        <nav class="site-nav">
+            <a href="index.html" class="nav-link active">App</a>
+            <a href="docs.html" class="nav-link">Docs</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="https://github.com/kimnken/bbms" class="nav-link nav-gh" target="_blank">GitHub ↗</a>
+        </nav>
+        <div class="header-status">
+            <div class="live-dot"></div>
+            <span id="headerBlocks">0 Blocks</span>
+            <span id="headerClock">00:00:00</span>
+        </div>
+    </header>
+
+    <div class="page-wrap">
+        <section class="hero">
+            <div class="eyebrow">Anti-Money Laundering Investigations</div>
+            <h1>Blockchain-Based Evidence Management</h1>
+            <p class="subtitle">A secure, immutable, and transparent ledger for sealing digital financial evidence in AML cases.</p>
+            <div class="badge-row">
+                <span class="badge">Immutable Ledger</span>
+                <span class="badge">Real SHA-256</span>
+                <span class="badge">Proof of Work</span>
+                <span class="badge">Full Audit Trail</span>
+            </div>
+        </section>
+
+        <div class="stats-bar">
+            <div class="stat blue">
+                <div class="stat-label">Total Blocks</div>
+                <div class="stat-value" id="statBlocks">0</div>
+            </div>
+            <div class="stat green">
+                <div class="stat-label">Evidence Records</div>
+                <div class="stat-value" id="statRecords">0</div>
+            </div>
+            <div class="stat green">
+                <div class="stat-label">Chain Status</div>
+                <div class="stat-value" id="statStatus">SECURE</div>
+            </div>
+            <div class="stat orange">
+                <div class="stat-label">Tamper Attempts</div>
+                <div class="stat-value" id="statTamper">0</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Blockchain Explorer</h2>
+                <div class="actions">
+                    <button class="btn btn-ghost btn-sm" onclick="verifyChain()">Verify Integrity</button>
+                    <button class="btn btn-warn btn-sm" onclick="simulateTamper()">Simulate Tamper</button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="chain-scroll">
+                    <div class="chain" id="chainDisplay">
+                        <!-- Blocks injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Evidence Management</h2>
+                    <button class="btn btn-ghost btn-sm" onclick="loadSample()">Load Sample</button>
+                </div>
+                <div class="panel-body">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="add">Add Evidence</div>
+                        <div class="tab" data-tab="list">Evidence List</div>
+                        <div class="tab" data-tab="audit">Audit Log</div>
+                    </div>
+
+                    <div id="tab-add" class="tab-pane active">
+                        <form id="evidenceForm" onsubmit="event.preventDefault(); addEvidence();" class="form-grid">
+                            <div class="field">
+                                <label>Transaction ID *</label>
+                                <input type="text" id="txId" placeholder="e.g. TXN-2024-001" required>
+                            </div>
+                            <div class="field">
+                                <label>Amount (NGN) *</label>
+                                <input type="number" id="txAmount" placeholder="0.00" required>
+                            </div>
+                            <div class="field">
+                                <label>Sender Name *</label>
+                                <input type="text" id="txSender" placeholder="Entity or Person" required>
+                            </div>
+                            <div class="field">
+                                <label>Receiver Name *</label>
+                                <input type="text" id="txReceiver" placeholder="Entity or Person" required>
+                            </div>
+                            <div class="field">
+                                <label>Transaction Type</label>
+                                <select id="txType">
+                                    <option value="bank_transfer">Bank Transfer</option>
+                                    <option value="cash_deposit">Cash Deposit</option>
+                                    <option value="wire_transfer">Wire Transfer</option>
+                                    <option value="crypto_tx">Crypto Transaction</option>
+                                    <option value="invoice">Invoice Payment</option>
+                                    <option value="mobile_money">Mobile Money</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Flag Level</label>
+                                <div class="flag-row">
+                                    <div class="flag-opt" data-flag="LOW">LOW</div>
+                                    <div class="flag-opt flag-selected" data-flag="MEDIUM">MED</div>
+                                    <div class="flag-opt" data-flag="HIGH">HIGH</div>
+                                    <div class="flag-opt" data-flag="CRITICAL">CRIT</div>
+                                </div>
+                                <input type="hidden" id="txFlag" value="MEDIUM">
+                            </div>
+                            <div class="field full">
+                                <label>Case Description / Evidence Notes</label>
+                                <textarea id="txCase" rows="3" placeholder="Describe the suspicious activity..."></textarea>
+                            </div>
+                            <div class="field full">
+                                <button type="submit" id="sealBtn" class="btn btn-primary" style="width:100%">Seal to Blockchain</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="tab-list" class="tab-pane">
+                        <div id="evidenceList" class="evidence-list">
+                            <!-- Evidence items injected here -->
+                        </div>
+                    </div>
+
+                    <div id="tab-audit" class="tab-pane">
+                        <div id="auditLog" class="audit-log">
+                            <!-- Audit rows injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Block Inspector</h2>
+                </div>
+                <div class="panel-body" id="blockDetail">
+                    <div class="empty-state">Select a block to view details</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

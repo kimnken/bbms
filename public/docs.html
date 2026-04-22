@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | BBMS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .docs-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+        .docs-aside { position: sticky; top: 100px; height: fit-content; }
+        .docs-aside h4 { font-family: 'Syne', sans-serif; margin-bottom: 1rem; font-size: 0.9rem; text-transform: uppercase; color: var(--text3); }
+        .docs-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+        .docs-nav a { color: var(--text2); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .docs-nav a:hover { color: var(--accent); }
+        .docs-content h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .docs-content h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--accent); }
+        .docs-content p { margin-bottom: 1rem; color: var(--text2); }
+        .docs-content code { font-family: 'Space Mono', monospace; background: var(--surface); padding: 0.2rem 0.4rem; border-radius: 4px; color: var(--orange); }
+        .docs-content pre { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); overflow-x: auto; margin-bottom: 1.5rem; }
+        .docs-content pre code { background: none; padding: 0; color: var(--text); font-size: 0.85rem; }
+        .callout { padding: 1.5rem; border-radius: 12px; background: rgba(0, 184, 240, 0.05); border-left: 4px solid var(--accent); margin: 2rem 0; }
+        @media (max-width: 800px) { .docs-wrap { grid-template-columns: 1fr; } .docs-aside { display: none; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">BB<span>MS</span></div>
+        <nav class="site-nav">
+            <a href="index.html" class="nav-link">App</a>
+            <a href="docs.html" class="nav-link active">Docs</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="https://github.com/kimnken/bbms" class="nav-link nav-gh" target="_blank">GitHub ↗</a>
+        </nav>
+        <div class="header-status">
+            <div class="live-dot"></div>
+            <span id="headerBlocks">0 Blocks</span>
+            <span id="headerClock">00:00:00</span>
+        </div>
+    </header>
+
+    <div class="docs-wrap">
+        <aside class="docs-aside">
+            <h4>Documentation</h4>
+            <nav class="docs-nav">
+                <a href="#intro">Introduction</a>
+                <a href="#blockchain">Blockchain Engine</a>
+                <a href="#security">Security Model</a>
+                <a href="#api">API Reference</a>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <h1 id="intro">Technical Documentation</h1>
+            <p>BBMS (Blockchain-Based Model for Securing Financial Evidence) is a specialized implementation of a distributed ledger designed specifically for Anti-Money Laundering (AML) investigations.</p>
+            
+            <div class="callout">
+                <strong>Project Goal:</strong> To ensure that once digital financial evidence is collected, it cannot be altered, deleted, or hidden by any party, including system administrators.
+            </div>
+
+            <h2 id="blockchain">The Blockchain Engine</h2>
+            <p>The core engine is built using a custom <code>Blockchain</code> class in Node.js. It utilizes the <code>crypto</code> module for SHA-256 hashing and implements a Proof-of-Work (PoW) consensus mechanism to secure the chain.</p>
+            <pre><code>// Block Structure
+{
+  index: Number,
+  timestamp: ISO8601,
+  data: {
+    txId: String,
+    amount: Number,
+    sender: String,
+    receiver: String,
+    sealedBy: String
+  },
+  previousHash: String,
+  nonce: Number,
+  hash: String
+}</code></pre>
+
+            <h2 id="security">Security Model</h2>
+            <p>The system maintains integrity through three primary layers:</p>
+            <ul>
+                <li><strong>Immutability:</strong> Each block contains the hash of the previous block. Changing a single character in Block A invalidates the hashes of all subsequent blocks.</li>
+                <li><strong>Verification:</strong> The <code>validateChain()</code> method recomputes every hash in the chain to detect tampering.</li>
+                <li><strong>Audit Trail:</strong> Every action (sealing, verifying, or attempting to tamper) is recorded in a non-reversible audit log.</li>
+            </ul>
+
+            <h2 id="api">API Reference</h2>
+            <p>The backend provides a RESTful API for frontend interaction:</p>
+            <ul>
+                <li><code>GET /api/chain</code> - Returns the full blockchain.</li>
+                <li><code>GET /api/stats</code> - Returns system statistics and health.</li>
+                <li><code>POST /api/evidence</code> - Seals new evidence to the chain.</li>
+                <li><code>GET /api/verify/chain</code> - Performs a full integrity check.</li>
+            </ul>
+        </main>
+    </div>
+
+    <div id="toast"></div>
+    <script src="js/app.js"></script>
+</body>
+</html>

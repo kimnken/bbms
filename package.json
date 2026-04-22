@@ -1,0 +1,12 @@
+{
+  "name": "bbms",
+  "version": "1.0.0",
+  "description": "Blockchain-Based Model for Securing Financial Evidence in Anti-Money Laundering Investigations",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "Nken Sharon Kim",
+  "license": "MIT",
+  "dependencies": {}
+}
