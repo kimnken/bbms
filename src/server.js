@@ -5,7 +5,7 @@ const url = require('url');
 const { Blockchain } = require('./blockchain');
 
 const PORT = process.env.PORT || 3000;
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const PUBLIC_DIR = path.join(__dirname, '..');
 
 const bbms = new Blockchain(2);
 

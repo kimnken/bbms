@@ -38,14 +38,13 @@ bbms/
 ├── src/
 │   ├── blockchain.js     ← Core blockchain engine
 │   └── server.js         ← HTTP server + REST API router
-├── public/
-│   ├── index.html        ← Main app UI
-│   ├── docs.html         ← Technical documentation
-│   ├── about.html        ← Project info & author page
-│   ├── css/
-│   │   └── style.css     ← Design system stylesheet
-│   └── js/
-│       └── app.js        ← Frontend logic & API client
+├── index.html            ← Main app UI
+├── docs.html             ← Technical documentation
+├── about.html            ← Project info & author page
+├── css/
+│   └── style.css         ← Design system stylesheet
+├── js/
+│   └── app.js            ← Frontend logic & API client
 ├── package.json
 └── README.md
 ```
